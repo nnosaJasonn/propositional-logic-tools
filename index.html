@@ -45,38 +45,66 @@
     </table>
 </div>
 
-
+<script src="jquery.js"></script>
 <script>
-    var inputArray;
+
+
+
+    var inputArray =[];
     var inputs;
-    function input(n) {
-        inputs = document.getElementById('Input_Field').value += n;
+
+    /*function input(n) {
+       inputs = document.getElementById('Input_Field').value += n;
+
         return inputs
+    }*/
+    var inputArrToStr;
+
+    function input(n) {
+        inputArray.push(n);
+        inputArrToStr = inputArray.join('');
+
+        var inputs = $('#Input_Field:text').val(inputArrToStr);
+        return inputArrToStr;
+
     }
+
     var nameArray = '';
+
     function numOfNames() {
-        var items = document.getElementById('name_counter').value;
+        var items = $('#name_counter').val();
         var noSpace = items.replace(/\s+/g, '');
         nameArray = noSpace.split(',');
+
+
         for(var i=0; i<nameArray.length; i++){
+/*
             var listItem = document.createElement("Button");
-            var listText = document.createTextNode(nameArray[i]);
+*/
+            var listText = nameArray[i];
+
             var attribute = '' + nameArray[i] + '';
-            listItem.setAttribute('onclick',  `input('${attribute}')`);
-            listItem.appendChild(listText);
-            document.getElementById("names").appendChild(listItem);
+
+           /* listItem.setAttribute('onclick',  `input('${attribute}')`);
+            listItem.append(listText);*/
+            $("#names").append('<button onclick=input(' + "'" + attribute + "'" + ')>' + listText + '</button>');
         }
         console.log(nameArray);
         return nameArray
+
     }
     var tr = '';
+
+
     function buildTable() {
-        inputArray = inputs.split(',');
+        inputArray = inputArrToStr.split(',');
         console.log(inputArray);
         var headArray = nameArray;
         var tdNum = nameArray.length;
+
         var rowNum = Math.pow(2, nameArray.length);
         console.log(rowNum);
+
         for(var i = 0; i<inputArray.length; i++){
             if(inputArray[i] !== ''){ headArray.push(inputArray[i])}
         }
@@ -86,34 +114,38 @@
             headerCell.appendChild(headerText);
             document.getElementById('header').appendChild(headerCell)
         });
+
         for( i=0; i<rowNum; i++){
             tr = document.createElement('TR');
             document.getElementById('truthTable').appendChild(tr);
+
         }
     }
+
     /*  function createTD(){
-         var rowNum = Math.pow(2, nameArray.length);
-         var tfObjects = {};
-         for (var i =0; i<nameArray.length; i++){
-            tfObjects.name= nameArray[i];
-            tfObjects.truthValue = []
-            console.log(tfObjects);
+          var rowNum = Math.pow(2, nameArray.length);
+          var tfObjects = {};
+          for (var i =0; i<nameArray.length; i++){
+             tfObjects.name= nameArray[i];
+             tfObjects.truthValue = []
+             console.log(tfObjects);
+
           }
+
       }*/
+
     /*define a function that takes in a power of 2 and returns an array whose length equals the given input and is (first) half 'T' and (second) half 'F'*/
-    function makeData(input) {
-        var inputPow = Math.pow(2, input);
-        var truth1Array = [];
-        for(var i = 0; i<inputPow; i++){
-            if (truth1Array <= inputPow / 2){
-                truth1Array.push('T')
-            } else {
-                truth1Array.push('f')
-            }
-        }
-    }
-    document.getElementById('generate').addEventListener('click', buildTable, false);
-    document.getElementById('addNames').addEventListener('click', numOfNames, false);
+
+
+
+
+
+
+
+    $('#generate').click(buildTable);
+    $('#addNames').click(numOfNames);
+
+
 </script>
 
 </body>
