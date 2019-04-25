@@ -58,7 +58,6 @@
     function input(n) {
         inputArray.push(n);
         inputArrToStr = inputArray.join('');
-
         var inputs = $('#Input_Field:text').val(inputArrToStr);
         return inputArrToStr;
 
@@ -129,7 +128,67 @@
         var truth3Array = [];
         var truth4Array = [];
         for (var i = 0; i < inputPow; i++) {
-            if (truth1Array.length < (inputPow / 2)) {
+            if (truth1Array.length < (inputPow * (1 / 32))) {
+                truth1Array.push('T');
+            } else if (truth1Array.length < (inputPow * (1 / 16))) {
+                truth1Array.push('F')
+            } else if (truth1Array.length < (inputPow * (3 / 32))) {
+                truth1Array.push('T')
+            } else if (truth1Array.length < (inputPow * (1 / 8))) {
+                truth1Array.push('F')
+            } else if (truth1Array.length < (inputPow * (5 / 32))) {
+                truth1Array.push('T')
+            } else if (truth1Array.length < (inputPow * (3 / 16))) {
+                truth1Array.push('F')
+            } else if (truth1Array.length < (inputPow * (7 / 32))) {
+                truth1Array.push('T')
+            } else if (truth1Array.length < (inputPow * (1 / 4))) {
+                truth1Array.push('F')
+            } else if (truth1Array.length < (inputPow * (9 / 32))) {
+                truth1Array.push('T')
+            } else if (truth1Array.length < (inputPow * (5 / 16))) {
+                truth1Array.push('F')
+            } else if (truth1Array.length < (inputPow * (11 / 32))) {
+                truth1Array.push('T')
+            } else if (truth1Array.length < (inputPow * (3 / 8))) {
+                truth1Array.push('F')
+            } else if (truth1Array.length < (inputPow * (13 / 32))) {
+                truth1Array.push('T')
+            } else if (truth1Array.length < (inputPow * (7 / 16))) {
+                truth1Array.push('F')
+            } else if (truth1Array.length < (inputPow * (15 / 32))) {
+                truth1Array.push('T')
+            }if (truth1Array.length < (inputPow * (1 / 2))) {
+                truth1Array.push('F');
+            } else if (truth1Array.length < (inputPow * (17 / 32))) {
+                truth1Array.push('T')
+            } else if (truth1Array.length < (inputPow * (9 / 16))) {
+                truth1Array.push('F')
+            } else if (truth1Array.length < (inputPow * (19 / 32))) {
+                truth1Array.push('T')
+            } else if (truth1Array.length < (inputPow * (5 / 8))) {
+                truth1Array.push('F')
+            } else if (truth1Array.length < (inputPow * (21 / 32))) {
+                truth1Array.push('T')
+            } else if (truth1Array.length < (inputPow * (11 / 16))) {
+                truth1Array.push('F')
+            } else if (truth1Array.length < (inputPow * (23 / 32))) {
+                truth1Array.push('T')
+            } else if (truth1Array.length < (inputPow * (6 / 8))) {
+                truth1Array.push('F')
+            } else if (truth1Array.length < (inputPow * (25 / 32))) {
+                truth1Array.push('T')
+            } else if (truth1Array.length < (inputPow * (13 / 16))) {
+                truth1Array.push('F')
+            } else if (truth1Array.length < (inputPow * (27 / 32))) {
+                truth1Array.push('T')
+            } else if (truth1Array.length < (inputPow * (7 / 8))) {
+                truth1Array.push('F')
+            } else if (truth1Array.length < (inputPow * (29 / 32))) {
+                truth1Array.push('T')
+            } else if (truth1Array.length < (inputPow * (15 / 16))) {
+                truth1Array.push('F')
+            } else if (truth1Array.length < (inputPow * (31 / 32))) {
                 truth1Array.push('T')
             } else {
                 truth1Array.push('F')
@@ -202,6 +261,7 @@
                 }
             }
 
+
         if (headArray.length === 2) {
             for (i=0; i<inputPow; i++){
                 $('#' + [i]).append('<td>' + truth2Array[i] + '</td>')
@@ -224,6 +284,7 @@
 
             }
         }
+
 
             console.log(truth4Array);
             console.log(truth3Array);
@@ -288,6 +349,22 @@ to do:
                       f f t f
                       f f f t
                       f f f f
+
+
+|||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||Fun Problem: |||||||||||||
+|||||||||||||||||||||||||||||||||||||||||
+
+* define a function that takes in an arr.length and returns this progression
+length: 1 output= A: [t, f]
+length: 2 output= A: [t]*2, [f]*2] B: [t, f]*2
+length: 3 output= A: [t*4, f*4] B: [[t*2, f*2]*2] C: [[t,f]*8]
+length: 4 output= A: [t*8, f*8] B: [[t*4, f*4]*2] C: [t*2, f*2]*4] D: [t,f]*16
+?????????????????????????????????????????????????????????????????
+recursive function???????????????????????????????????????????????
+?????????????????????????????????????????????????????????????????
+
+
 nameArray[0] -> alternate true and false by halves
 nameArray[1] -> alternate true and false by quarters
 nameArray[2] -> alternate true and false by 8ths
