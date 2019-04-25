@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    function funProblem (num) {
+        var output = {};
+        if(num === 1) {
+            return output = {
+                A: ['t','f']
+            };
+        } else if(num === 2) {
+            return output = {
+                A: ['t', 't', 'f', 'f'],
+                B: ['t', 'f', 't', 'f',]
+            }
+        } else if(num === 3) {
+            return output = {
+                A: ['t', 't', 't', 't', 'f', 'f', 'f', 'f'],
+                B: ['t', 't', 'f', 'f', 't', 't', 'f', 'f'],
+                C: ['t', 'f', 't', 'f', 't', 'f', 't', 'f']
+            }
+        } else if (num === 4) {
+            return output = {
+                A: ['t', 't', 't', 't','t', 't', 't', 't', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f'],
+                B: ['t', 't', 't', 't', 'f', 'f', 'f', 'f','t', 't', 't', 't', 'f', 'f', 'f', 'f'],
+                C: ['t', 't', 'f', 'f', 't', 't', 'f', 'f','t', 't', 'f', 'f', 't', 't', 'f', 'f'],
+                D: ['t', 'f', 't', 'f', 't', 'f', 't', 'f','t', 'f', 't', 'f', 't', 'f', 't', 'f']
+            }
+        }
+    }
+
+</script>
+</body>
+</html>
+
+|||||||||||||||||||||||||||||||||||||||||
+|||||||||||||||Fun Problem: |||||||||||||
+|||||||||||||||||||||||||||||||||||||||||
+
+* define a function that takes in an arr.length and returns this progression
+length: 1 output= A: [t, f]
+length: 2 output= A: [t]*2, [f]*2] B: [t, f]*2
+length: 3 output= A: [t*4, f*4] B: [[t*2, f*2]*2] C: [[t,f]*8]
+length: 4 output= A: [t*8, f*8] B: [[t*4, f*4]*2] C: [t*2, f*2]*4] D: [t,f]*16
+?????????????????????????????????????????????????????????????????
+recursive function???????????????????????????????????????????????
+?????????????????????????????????????????????????????????????????
