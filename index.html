@@ -51,13 +51,8 @@
 
 
     var inputArray =[];
-    var inputs;
 
-    /*function input(n) {
-       inputs = document.getElementById('Input_Field').value += n;
 
-        return inputs
-    }*/
     var inputArrToStr;
 
     function input(n) {
@@ -78,15 +73,10 @@
 
 
         for(var i=0; i<nameArray.length; i++){
-/*
-            var listItem = document.createElement("Button");
-*/
             var listText = nameArray[i];
 
             var attribute = '' + nameArray[i] + '';
 
-           /* listItem.setAttribute('onclick',  `input('${attribute}')`);
-            listItem.append(listText);*/
             $("#names").append('<button onclick=input(' + "'" + attribute + "'" + ')>' + listText + '</button>');
         }
         console.log(nameArray);
@@ -94,46 +84,154 @@
 
     }
     var tr = '';
+    var headArray = []
 
 
     function buildTable() {
         inputArray = inputArrToStr.split(',');
         console.log(inputArray);
-        var headArray = nameArray;
+        headArray = nameArray;
         var tdNum = nameArray.length;
-
         var rowNum = Math.pow(2, nameArray.length);
         console.log(rowNum);
-
         for(var i = 0; i<inputArray.length; i++){
             if(inputArray[i] !== ''){ headArray.push(inputArray[i])}
         }
         headArray.forEach(function(element, index) {
-            var headerCell = document.createElement('TH');
-            var headerText = document.createTextNode(element);
-            headerCell.appendChild(headerText);
-            document.getElementById('header').appendChild(headerCell)
+            $('#header').append('<th>' + element + '</th>')
         });
-
         for( i=0; i<rowNum; i++){
-            tr = document.createElement('TR');
-            document.getElementById('truthTable').appendChild(tr);
-
+           /* tr = document.createElement('TR');*/
+            $('#truthTable').append('<tr class="truthData" id="' + i + '"></tr>');
         }
+        makeData(headArray);
+        console.log(inputArray.length);
+        console.log(nameArray.length);
+
+    }
+    $('#clear').click(function(){
+       return inputArray =[]
+    });
+
+
+
+
+
+    function makeData(headArray) {
+        var input = headArray.length;
+        console.log(input);
+
+
+        var inputPow = Math.pow(2, input);
+        console.log(inputPow);
+        var truth1Array = [];
+        var truth2Array = [];
+        var truth3Array = [];
+        var truth4Array = [];
+        for (var i = 0; i < inputPow; i++) {
+            if (truth1Array.length < (inputPow / 2)) {
+                truth1Array.push('T')
+            } else {
+                truth1Array.push('F')
+            }
+        }
+        for (var i = 0; i < inputPow; i++) {
+            if (truth2Array.length < (inputPow * (1 / 4))) {
+                truth2Array.push('T');
+            } else if (truth2Array.length < (inputPow * (1 / 2))) {
+                truth2Array.push('F')
+            } else if (truth2Array.length < (inputPow * (3 / 4))) {
+                truth2Array.push('T')
+            } else {
+                truth2Array.push('F')
+            }
+        }
+        for (i = 0; i < inputPow; i++) {
+            if (truth3Array.length < (inputPow * (1 / 8))) {
+                truth3Array.push('T');
+            } else if (truth3Array.length < (inputPow * (1 / 4))) {
+                truth3Array.push('F')
+            } else if (truth3Array.length < (inputPow * (3 / 8))) {
+                truth3Array.push('T')
+            } else if (truth3Array.length < (inputPow * (1 / 2))) {
+                truth3Array.push('F')
+            } else if (truth3Array.length < (inputPow * (5 / 8))) {
+                truth3Array.push('T')
+            } else if (truth3Array.length < (inputPow * (3 / 4))) {
+                truth3Array.push('F')
+            } else if (truth3Array.length < (inputPow * (7 / 8))) {
+                truth3Array.push('T')
+            } else {
+                truth3Array.push('F')
+            }
+        }
+     /*   for (i = 0; i < inputPow; i++) {*/
+            for (i = 0; i < inputPow; i++) {
+                if (truth4Array.length < (inputPow * (1 / 16))) {
+                    truth4Array.push('T');
+                } else if (truth4Array.length < (inputPow * (1 / 8))) {
+                    truth4Array.push('F')
+                } else if (truth4Array.length < (inputPow * (3 / 16))) {
+                    truth4Array.push('T')
+                } else if (truth4Array.length < (inputPow * (1 / 4))) {
+                    truth4Array.push('F')
+                } else if (truth4Array.length < (inputPow * (5 / 16))) {
+                    truth4Array.push('T')
+                } else if (truth4Array.length < (inputPow * (3 / 8))) {
+                    truth4Array.push('F')
+                } else if (truth4Array.length < (inputPow * (7 / 16))) {
+                    truth4Array.push('T')
+                } else if (truth4Array.length < (inputPow * (1 / 2))) {
+                    truth4Array.push('F')
+                } else if (truth4Array.length < (inputPow * (9 / 16))) {
+                    truth4Array.push('T')
+                } else if (truth4Array.length < (inputPow * (5 / 8))) {
+                    truth4Array.push('F')
+                } else if (truth4Array.length < (inputPow * (11 / 16))) {
+                    truth4Array.push('T')
+                } else if (truth4Array.length < (inputPow * (3 / 4))) {
+                    truth4Array.push('F')
+                } else if (truth4Array.length < (inputPow * (13 / 16))) {
+                    truth4Array.push('T')
+                } else if (truth4Array.length < (inputPow * (7 / 8))) {
+                    truth4Array.push('F')
+                } else if (truth4Array.length < (inputPow * (15 / 16))) {
+                    truth4Array.push('T')
+                } else {
+                    truth4Array.push('F')
+                }
+            }
+
+        if (headArray.length === 2) {
+            for (i=0; i<inputPow; i++){
+                $('#' + [i]).append('<td>' + truth2Array[i] + '</td>')
+            }
+        }
+        if (headArray.length === 3) {
+            for (i=0; i<inputPow; i++) {
+                $('#' + [i]).append('<td>' + truth2Array[i] + '</td>' + '<td>' + truth3Array[i] + '</td>')
+            }
+        }
+        if (headArray.length === 4) {
+            for(i=0; i<inputPow; i++) {
+                $('#' + [i]).append('<td>' + truth2Array[i] + '</td>' + '<td>' + truth3Array[i] + '</td>' + '<td>' + truth4Array[i] +'</td>')
+
+            }
+        }
+        if (headArray.length === 5) {
+            for(i=0; i<inputPow; i++) {
+                $('#' + [i]).append('<td>' + truth2Array[i] + '</td>' + '<td>' + truth3Array[i] + '</td>' + '<td>' + truth4Array[i] +'</td>' + '<td>' + truth1Array[i] +'</td>')
+
+            }
+        }
+
+            console.log(truth4Array);
+            console.log(truth3Array);
+            console.log(truth2Array);
+            console.log(truth1Array);
     }
 
-    /*  function createTD(){
-          var rowNum = Math.pow(2, nameArray.length);
-          var tfObjects = {};
-          for (var i =0; i<nameArray.length; i++){
-             tfObjects.name= nameArray[i];
-             tfObjects.truthValue = []
-             console.log(tfObjects);
-
-          }
-
-      }*/
-
+makeData(4);
     /*define a function that takes in a power of 2 and returns an array whose length equals the given input and is (first) half 'T' and (second) half 'F'*/
 
 
@@ -194,4 +292,73 @@ nameArray[0] -> alternate true and false by halves
 nameArray[1] -> alternate true and false by quarters
 nameArray[2] -> alternate true and false by 8ths
 nameArray[3] -> alternate true and false by 16ths
+
+
+var inputArray;
+    var inputs;
+     function input(n) {
+       inputs = document.getElementById('Input_Field').value += n;
+         return inputs
+    }
+ var nameArray = '';
+     function numOfNames() {
+        var items = document.getElementById('name_counter').value;
+        var noSpace = items.replace(/\s+/g, '');
+         nameArray = noSpace.split(',');
+         for(var i=0; i<nameArray.length; i++){
+            var listItem = document.createElement("Button");
+            var listText = document.createTextNode(nameArray[i]);
+             var attribute = '' + nameArray[i] + '';
+             listItem.setAttribute('onclick',  `input('${attribute}')`);
+            listItem.appendChild(listText);
+            document.getElementById("names").appendChild(listItem);
+        }
+        console.log(nameArray);
+        return nameArray
+     }
+var tr = '';
+     function buildTable() {
+        inputArray = inputs.split(',');
+        console.log(inputArray);
+        var headArray = nameArray;
+        var tdNum = nameArray.length;
+         var rowNum = Math.pow(2, nameArray.length);
+        console.log(rowNum);
+         for(var i = 0; i<inputArray.length; i++){
+        if(inputArray[i] !== ''){ headArray.push(inputArray[i])}
+    }
+        headArray.forEach(function(element, index) {
+            var headerCell = document.createElement('TH');
+            var headerText = document.createTextNode(element);
+            headerCell.appendChild(headerText);
+            document.getElementById('header').appendChild(headerCell)
+        });
+         for( i=0; i<rowNum; i++){
+             tr = document.createElement('TR');
+            document.getElementById('truthTable').appendChild(tr);
+         }
+    }
+   /*  function createTD(){
+        var rowNum = Math.pow(2, nameArray.length);
+        var tfObjects = {};
+        for (var i =0; i<nameArray.length; i++){
+           tfObjects.name= nameArray[i];
+           tfObjects.truthValue = []
+           console.log(tfObjects);
+         }
+     }*/
+   /*define a function that takes in a power of 2 and returns an array whose length equals the given input and is (first) half 'T' and (second) half 'F'*/
+   function makeData(input) {
+      var inputPow = Math.pow(2, input);
+      var truth1Array = [];
+      for(var i = 0; i<inputPow; i++){
+          if (truth1Array <= inputPow / 2){
+              truth1Array.push('T')
+          } else {
+              truth1Array.push('f')
+          }
+      }
+  }
+     document.getElementById('generate').addEventListener('click', buildTable, false);
+    document.getElementById('addNames').addEventListener('click', numOfNames, false);
 --->
