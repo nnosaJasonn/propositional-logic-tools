@@ -103,6 +103,7 @@
            /* tr = document.createElement('TR');*/
             $('#truthTable').append('<tr class="truthData" id="' + i + '"></tr>');
         }
+        /*truthValues(inputArray);*/
         makeData(headArray);
         console.log(inputArray.length);
         console.log(nameArray.length);
@@ -113,8 +114,92 @@
     });
 
 
+/*
+    function truthValues(arr) {
+        var arr2Str = arr.join(' ');
+        var str2Arr = arr2Str.split(' ');
+        var connective = '';
+        for(i = 0; i<str2Arr.length; i++) {
+            if (str2Arr[i] === 'v' || str2Arr[i] === '&' || str2Arr[i] === '->' || str2Arr[i] === '<->' ||  str2Arr[i] === '~' )
+            connective = str2Arr[i];
+        }
+        switch(connective) {
+            case 'v':
+                orTable(inputArray);
+                break;
+            case '&':
+                andTable(inputArray);
+                break;
+            case '->':
+                ifTable(inputArray);
+                break;
+            case '<->':
+                ifandifTable(inputArray);
+                break;
+        }
+    }*/
+    var cArray;
+    function orTable() {
+        var length = Math.pow(2, headArray.length);
+        cArray =[];
+        for (i=0; i<length; i++){
+            if (truthObject.a[i] === 'T' && truthObject.b[i] === 'T'){
+                cArray.push('T')
+            } else if ((truthObject.a[i] === 'T' && truthObject.b[i] === 'F') || (truthObject.a[i] === 'F' && truthObject.b[i] === 'T')) {
+                cArray.push('T')
+            } else {
+                cArray.push('F')
+            }
+        }
+        return cArray
+    }
+
+    function ifandifTable() {
+        var length = Math.pow(2, headArray.length);
+        cArray =[];
+        for (i=0; i<length; i++){
+            if ((truthObject.a[i] === 'T' && truthObject.b[i] === 'T') || ((truthObject.a[i] === 'F' && truthObject.b[i] === 'F'))){
+                cArray.push('T')
+            } else {
+                cArray.push('F')
+            }
+        }
+        return cArray
+    }
+
+    function andTable() {
+        var length = Math.pow(2, headArray.length);
+        cArray =[];
+        for (i=0; i<length; i++){
+            if (truthObject.a[i] === 'T' && truthObject.b[i] === 'T'){
+                cArray.push('T')
+            } else {
+                cArray.push('F')
+            }
+        }
+        return cArray
+    }
+
+    function ifTable(){
+        var length = Math.pow(2, headArray.length);
+        cArray =[];
+
+        truthObject.forEach(function(element){
+
+        });
+
+        for (i=0; i<length; i++){
+            if (truthObject.a[i] === 'T' && truthObject.b[i] === 'F'){
+                cArray.push('F')
+            } else {
+                cArray.push('T')
+            }
+        }
+        return cArray
+    }
 
 
+var truthObject = {};
 
     function makeData(headArray) {
         var input = headArray.length;
@@ -261,6 +346,47 @@
                 }
             }
 
+        truth2Array.push('a');
+        truth3Array.push('b');
+        truth4Array.push('c');
+        truth1Array.push('d');
+
+        truthObject = {
+            a: truth2Array,
+            b: truth3Array,
+            c: truth4Array,
+            d: truth1Array
+        };
+
+            var arr2Str = inputArray.join(' ');
+            var str2Arr = arr2Str.split(' ');
+            var compares = [];
+            var connective = '';
+            for(i = 0; i<str2Arr.length; i++) {
+
+                if (str2Arr[i] === 'v' || str2Arr[i] === '&' || str2Arr[i] === '->' || str2Arr[i] === '<->' ||  str2Arr[i] === '~' ) {
+                    connective = str2Arr[i];
+                } else {
+                    compares.push(str2Arr[i])
+                }
+            }
+            console.log(compares);
+            switch(connective) {
+                case 'v':
+                    orTable(inputArray);
+                    break;
+                case '&':
+                    andTable(inputArray);
+                    break;
+                case '->':
+                    ifTable(inputArray);
+                    break;
+                case '<->':
+                    ifandifTable(inputArray);
+                    break;
+            }
+
+
 
         if (headArray.length === 2) {
             for (i=0; i<inputPow; i++){
@@ -269,28 +395,32 @@
         }
         if (headArray.length === 3) {
             for (i=0; i<inputPow; i++) {
-                $('#' + [i]).append('<td>' + truth2Array[i] + '</td>' + '<td>' + truth3Array[i] + '</td>')
+                $('#' + [i]).append('<td>' + truth2Array[i] + '</td>' + '<td>' + truth3Array[i] + '</td>' + '<td>' + cArray[i] +'</td>')
             }
         }
         if (headArray.length === 4) {
             for(i=0; i<inputPow; i++) {
-                $('#' + [i]).append('<td>' + truth2Array[i] + '</td>' + '<td>' + truth3Array[i] + '</td>' + '<td>' + truth4Array[i] +'</td>')
+                $('#' + [i]).append('<td>' + truth2Array[i] + '</td>' + '<td>' + truth3Array[i] + '</td>' + '<td>' + truth4Array[i] +'</td>' + '<td>' + cArray[i] +'</td>')
 
             }
         }
         if (headArray.length === 5) {
             for(i=0; i<inputPow; i++) {
-                $('#' + [i]).append('<td>' + truth2Array[i] + '</td>' + '<td>' + truth3Array[i] + '</td>' + '<td>' + truth4Array[i] +'</td>' + '<td>' + truth1Array[i] +'</td>')
+                $('#' + [i]).append('<td>' + truth2Array[i] + '</td>' + '<td>' + truth3Array[i] + '</td>' + '<td>' + truth4Array[i] +'</td>' + '<td>' + truth1Array[i] +'</td>' + '<td>' + cArray[i] +'</td>')
 
             }
         }
+        console.log(truth4Array);
+        console.log(truth3Array);
+        console.log(truth2Array);
+        console.log(truth1Array);
 
 
-            console.log(truth4Array);
-            console.log(truth3Array);
-            console.log(truth2Array);
-            console.log(truth1Array);
+        console.log(truthObject);
+        return truthObject;
+
     }
+    console.log(truthObject);
 
 makeData(4);
     /*define a function that takes in a power of 2 and returns an array whose length equals the given input and is (first) half 'T' and (second) half 'F'*/
@@ -365,11 +495,11 @@ recursive function???????????????????????????????????????????????
 ?????????????????????????????????????????????????????????????????
 
 
-nameArray[0] -> alternate true and false by halves
-nameArray[1] -> alternate true and false by quarters
-nameArray[2] -> alternate true and false by 8ths
-nameArray[3] -> alternate true and false by 16ths
-
+[0] -> alternate true and false by halves
+[1] -> alternate true and false by quarters
+[2] -> alternate true and false by 8ths
+[3] -> alternate true and false by 16ths
+etc
 
 var inputArray;
     var inputs;

@@ -8,6 +8,7 @@
 
 
 <script>
+/*
 
     function funProblem (num) {
         var output = {};
@@ -36,10 +37,193 @@
         }
     }
 
+    console.log(funProblem(4));
+*/
+
+   /* var truth1Array = [];
+    var truth2Array = [];
+    var truth3Array = [];
+    var truth4Array = [];
+    for (var i = 0; i < inputPow; i++) {
+        if (truth1Array.length < (inputPow * (1 / 32))) {
+            truth1Array.push('T');
+        } else if (truth1Array.length < (inputPow * (1 / 16))) {
+            truth1Array.push('F')
+        } else if (truth1Array.length < (inputPow * (3 / 32))) {
+            truth1Array.push('T')
+        } else if (truth1Array.length < (inputPow * (1 / 8))) {
+            truth1Array.push('F')
+        } else if (truth1Array.length < (inputPow * (5 / 32))) {
+            truth1Array.push('T')
+        } else if (truth1Array.length < (inputPow * (3 / 16))) {
+            truth1Array.push('F')
+        } else if (truth1Array.length < (inputPow * (7 / 32))) {
+            truth1Array.push('T')
+        } else if (truth1Array.length < (inputPow * (1 / 4))) {
+            truth1Array.push('F')
+        } else if (truth1Array.length < (inputPow * (9 / 32))) {
+            truth1Array.push('T')
+        } else if (truth1Array.length < (inputPow * (5 / 16))) {
+            truth1Array.push('F')
+        } else if (truth1Array.length < (inputPow * (11 / 32))) {
+            truth1Array.push('T')
+        } else if (truth1Array.length < (inputPow * (3 / 8))) {
+            truth1Array.push('F')
+        } else if (truth1Array.length < (inputPow * (13 / 32))) {
+            truth1Array.push('T')
+        } else if (truth1Array.length < (inputPow * (7 / 16))) {
+            truth1Array.push('F')
+        } else if (truth1Array.length < (inputPow * (15 / 32))) {
+            truth1Array.push('T')
+        }if (truth1Array.length < (inputPow * (1 / 2))) {
+            truth1Array.push('F');
+        } else if (truth1Array.length < (inputPow * (17 / 32))) {
+            truth1Array.push('T')
+        } else if (truth1Array.length < (inputPow * (9 / 16))) {
+            truth1Array.push('F')
+        } else if (truth1Array.length < (inputPow * (19 / 32))) {
+            truth1Array.push('T')
+        } else if (truth1Array.length < (inputPow * (5 / 8))) {
+            truth1Array.push('F')
+        } else if (truth1Array.length < (inputPow * (21 / 32))) {
+            truth1Array.push('T')
+        } else if (truth1Array.length < (inputPow * (11 / 16))) {
+            truth1Array.push('F')
+        } else if (truth1Array.length < (inputPow * (23 / 32))) {
+            truth1Array.push('T')
+        } else if (truth1Array.length < (inputPow * (6 / 8))) {
+            truth1Array.push('F')
+        } else if (truth1Array.length < (inputPow * (25 / 32))) {
+            truth1Array.push('T')
+        } else if (truth1Array.length < (inputPow * (13 / 16))) {
+            truth1Array.push('F')
+        } else if (truth1Array.length < (inputPow * (27 / 32))) {
+            truth1Array.push('T')
+        } else if (truth1Array.length < (inputPow * (7 / 8))) {
+            truth1Array.push('F')
+        } else if (truth1Array.length < (inputPow * (29 / 32))) {
+            truth1Array.push('T')
+        } else if (truth1Array.length < (inputPow * (15 / 16))) {
+            truth1Array.push('F')
+        } else if (truth1Array.length < (inputPow * (31 / 32))) {
+            truth1Array.push('T')
+        } else {
+            truth1Array.push('F')
+        }
+    }
+    for (var i = 0; i < inputPow; i++) {
+        if (truth2Array.length < (inputPow * (1 / 4))) {
+            truth2Array.push('T');
+        } else if (truth2Array.length < (inputPow * (1 / 2))) {
+            truth2Array.push('F')
+        } else if (truth2Array.length < (inputPow * (3 / 4))) {
+            truth2Array.push('T')
+        } else {
+            truth2Array.push('F')
+        }
+    }
+    for (i = 0; i < inputPow; i++) {
+        if (truth3Array.length < (inputPow * (1 / 8))) {
+            truth3Array.push('T');
+        } else if (truth3Array.length < (inputPow * (1 / 4))) {
+            truth3Array.push('F')
+        } else if (truth3Array.length < (inputPow * (3 / 8))) {
+            truth3Array.push('T')
+        } else if (truth3Array.length < (inputPow * (1 / 2))) {
+            truth3Array.push('F')
+        } else if (truth3Array.length < (inputPow * (5 / 8))) {
+            truth3Array.push('T')
+        } else if (truth3Array.length < (inputPow * (3 / 4))) {
+            truth3Array.push('F')
+        } else if (truth3Array.length < (inputPow * (7 / 8))) {
+            truth3Array.push('T')
+        } else {
+            truth3Array.push('F')
+        }
+    }
+    /!*   for (i = 0; i < inputPow; i++) {*!/
+    for (i = 0; i < inputPow; i++) {
+        if (truth4Array.length < (inputPow * (1 / 16))) {
+            truth4Array.push('T');
+        } else if (truth4Array.length < (inputPow * (1 / 8))) {
+            truth4Array.push('F')
+        } else if (truth4Array.length < (inputPow * (3 / 16))) {
+            truth4Array.push('T')
+        } else if (truth4Array.length < (inputPow * (1 / 4))) {
+            truth4Array.push('F')
+        } else if (truth4Array.length < (inputPow * (5 / 16))) {
+            truth4Array.push('T')
+        } else if (truth4Array.length < (inputPow * (3 / 8))) {
+            truth4Array.push('F')
+        } else if (truth4Array.length < (inputPow * (7 / 16))) {
+            truth4Array.push('T')
+        } else if (truth4Array.length < (inputPow * (1 / 2))) {
+            truth4Array.push('F')
+        } else if (truth4Array.length < (inputPow * (9 / 16))) {
+            truth4Array.push('T')
+        } else if (truth4Array.length < (inputPow * (5 / 8))) {
+            truth4Array.push('F')
+        } else if (truth4Array.length < (inputPow * (11 / 16))) {
+            truth4Array.push('T')
+        } else if (truth4Array.length < (inputPow * (3 / 4))) {
+            truth4Array.push('F')
+        } else if (truth4Array.length < (inputPow * (13 / 16))) {
+            truth4Array.push('T')
+        } else if (truth4Array.length < (inputPow * (7 / 8))) {
+            truth4Array.push('F')
+        } else if (truth4Array.length < (inputPow * (15 / 16))) {
+            truth4Array.push('T')
+        } else {
+            truth4Array.push('F')
+        }
+    }
+
+    function makeMagic(num){
+
+        for(i=0; i<num; i++){
+
+        }
+    }
+
+    function addToArray() {
+        var array = [];
+        array.push(prompt("Add items to array or 'q' to stop"));
+        if (array.pop() == 'q') {
+            document.write(array)
+        }
+        else {
+            addToArray();
+        }
+    }
+    addToArray();*/
+
+
+    var truthtable = [];
+    function somefunction(num) {
+        var temptable = [];
+        for (var matrixH = 0; matrixH < Math.pow(2,num); matrixH++) {
+            for (var matrixW = 0; temptable.length < num; matrixW++){
+                temptable.push('T');
+            }
+            truthtable.push(temptable);
+        }
+        fixTable(truthtable);
+    }
+    somefunction(2);
+    console.log(truthtable);
+
+
+   /* function fixTable(arr) {
+        for (var i =0; i < arr.length; i++) {
+           var newArray[i].push(arr[i])
+        }
+    }
+*/
 </script>
 </body>
 </html>
-
+<script>
+/*
 |||||||||||||||||||||||||||||||||||||||||
 |||||||||||||||Fun Problem: |||||||||||||
 |||||||||||||||||||||||||||||||||||||||||
@@ -49,6 +233,60 @@ length: 1 output= A: [t, f]
 length: 2 output= A: [t]*2, [f]*2] B: [t, f]*2
 length: 3 output= A: [t*4, f*4] B: [[t*2, f*2]*2] C: [[t,f]*8]
 length: 4 output= A: [t*8, f*8] B: [[t*4, f*4]*2] C: [t*2, f*2]*4] D: [t,f]*16
+etc.
 ?????????????????????????????????????????????????????????????????
 recursive function???????????????????????????????????????????????
 ?????????????????????????????????????????????????????????????????
+
+t*x f*x
+
+function addToArray(x) {
+    var arr = [];
+    if(x<0) return;
+    for(var i =0; i<x; i++) {
+        output += 't,'
+        krautput += 'f'
+        for (var j=0; j < i; j++){
+        output += 't'
+        krautput += 'f'
+    }
+    }
+
+    return arr.push()
+}
+
+
+for (var i =1; i<10; i++) {
+    var output = '';
+    for (var j=0; j < i; j++){
+        output += i
+    }
+    console.log(output);
+}
+
+function factorial(x) {
+if (x<0) return;
+if(x===0) return 1;
+return x * factorial (x-1)
+}
+
+function revStr(str){
+if (str === '') return '';
+return revStr(str.substr(1)) + str[0];
+}
+
+var reverseStr = revStr('Hello from inline JavaScript');
+console.log(reverseStr);
+
+console.log(factorial(4));
+
+
+
+var scope = {}
+for (var i=1;i<=20;i++) {
+  scope['a'+i] = 'stuff';
+}
+*/
+
+
+</script>
